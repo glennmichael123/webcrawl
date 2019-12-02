@@ -54,11 +54,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                      <!-- Iterate through different dates -->
                     <?php foreach ($scrapedData['tableData'] as $k => $rows): ?>
-                        <tr>
-                            <td data-value="<?= explode('/', $k)[0]; ?>" style="font-weight: bold; font-size: 25px; text-align: center;" colspan="<?= count($scrapedData['headers'])?>">
-                                <?= $k ?> <a class="to-hide" href="#" style="font-size: 11px;">Toggle</a>
-                            </td>
-                        </tr>
+                        <!-- Check if key exists cause there is an array with empty data -->
+                        <?php if($k): ?>
+                            <tr>
+                                <td data-value="<?= explode('/', $k)[0]; ?>" style="font-weight: bold; font-size: 25px; text-align: center;" colspan="<?= count($scrapedData['headers'])?>">
+                                    <?= $k ?> <a class="to-hide" href="#" style="font-size: 11px;">Toggle</a>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                         <!-- Iterate through rows -->
                         <?php foreach ($rows as $key => $row): ?>
                             <tr class="<?= explode('/', $k)[0]; ?>"> 
