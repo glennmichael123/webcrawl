@@ -63,6 +63,7 @@ class Client {
 
             $rowData = array();
             $date = '';
+            $ky = 0;
 
             // Iterate through table date
             foreach($row->find('td') as $key => $cell) {
@@ -70,13 +71,14 @@ class Client {
                     // Make date as index key so that the dates could be grouped
                     $date = $cell->innertext;
                 }
-                
+
+                $ky = $key;
                 // Insert table date with table header columns as keys
                 $rowData[$headers[$key]] = $cell->innertext;
             }
 
             // Check if $rowData doesn't have empty data
-            if($rowData[$headers[$key]])
+            if($rowData[$headers[$ky]])
                 $tableData[$date][] = $rowData;
         }
 
