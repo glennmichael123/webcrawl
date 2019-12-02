@@ -63,7 +63,6 @@ class Client {
 
             $rowData = array();
             $date = '';
-            $ky = 0;
 
             // Iterate through table date
             foreach($row->find('td') as $key => $cell) {
@@ -78,8 +77,7 @@ class Client {
             }
 
             // Check if $rowData doesn't have empty data
-            if($rowData[$headers[$ky]])
-                $tableData[$date][] = $rowData;
+            $tableData[$date][] = $rowData;
         }
 
         // Return table data compact with headers
